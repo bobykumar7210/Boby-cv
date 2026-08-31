@@ -22,14 +22,6 @@ A modern, dark-themed online resume built with **HTML** and **CSS**. Designed fo
     └── Boby_Kumar_CV_Simple.docx           # DOCX — minimal grayscale version
 ```
 
-## Hosting on GitHub Pages
-
-1. Push your code to GitHub
-2. Go to **Settings → Pages**
-3. Under **Source**, select `master` branch and `/ (root)`
-4. Click **Save**
-5. Your resume will be live at `https://bobykumar7210.github.io/Boby-cv`
-
 ## License
 
 Personal resume. All rights reserved.
