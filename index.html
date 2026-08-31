@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boby Kumar | Resume</title>
+    <meta name="description" content="Resume of Boby Kumar — Full-Stack / Backend Developer based in Delhi, India." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+    <style>
+      /* ── Design Tokens ── */
+      :root {
+        --bg: #000000;
+        --page: #090b0f;
+        --surface: #0f1117;
+        --surface-hover: #141a22;
+        --text: #f3f4f6;
+        --text-secondary: #a1a7b3;
+        --accent: #8ab4ff;
+        --accent-glow: rgba(138, 180, 255, 0.28);
+        --accent-subtle: rgba(138, 180, 255, 0.09);
+        --gradient-start: #8ab4ff;
+        --gradient-end: #d8b4ff;
+        --border: rgba(255, 255, 255, 0.08);
+        --border-accent: rgba(138, 180, 255, 0.22);
+        --shadow: 0 26px 90px rgba(0, 0, 0, 0.72);
+        --radius: 14px;
+        --radius-sm: 8px;
+        --radius-pill: 999px;
+        --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --mono: 'JetBrains Mono', 'Fira Code', monospace;
+      }
+
+      /* ── Reset & Base ── */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: var(--font);
+        color: var(--text);
+        background: var(--bg);
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ── Ambient Background ── */
+      body::before {
+        content: '';
+        position: fixed;
+        top: -40%;
+        left: -20%;
+        width: 80vw;
+        height: 80vw;
+        background: radial-gradient(circle, rgba(108,140,255,0.06) 0%, transparent 65%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      body::after {
+        content: '';
+        position: fixed;
+        bottom: -30%;
+        right: -15%;
+        width: 70vw;
+        height: 70vw;
+        background: radial-gradient(circle, rgba(167,139,250,0.05) 0%, transparent 60%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ── Page Container ── */
+      .page {
+        position: relative;
+        z-index: 1;
+        max-width: 1020px;
+        margin: 48px auto;
+        background: var(--page);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        animation: pageIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      @keyframes pageIn {
+        from { opacity: 0; transform: translateY(24px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      /* ── Header / Topbar ── */
+      .topbar {
+        position: relative;
+        padding: 44px 48px 36px;
+        background: linear-gradient(135deg, #020304 0%, #0b0d12 45%, #11161d 100%);
+        border-bottom: 1px solid var(--border);
+        overflow: hidden;
+      }
+
+      /* Decorative header grid */
+      .topbar::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(108,140,255,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(108,140,255,0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 100%);
+        -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 100%);
+      }
+
+      /* Accent glow orb */
+      .topbar::after {
+        content: '';
+        position: absolute;
+        top: -60px;
+        right: -40px;
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, rgba(108,140,255,0.12) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .header-row {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        background: linear-gradient(135deg, #ffffff 0%, #c4ccdf 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: nameIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+      }
+
+      @keyframes nameIn {
+        from { opacity: 0; transform: translateX(-16px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+
+      .role {
+        margin-top: 10px;
+        font-size: 0.85rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--accent);
+        animation: nameIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+      }
+
+      .contact-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+        justify-content: flex-end;
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        animation: nameIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+      }
+
+      .contact-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        transition: color 0.25s ease;
+      }
+
+      .contact-item:hover { color: var(--accent); }
+
+      .contact-item::before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: 0.5;
+        flex-shrink: 0;
+      }
+
+      .contact-item:first-child::before { display: none; }
+
+      /* ── Layout ── */
+      .content {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+      }
+
+      /* ── Sidebar ── */
+      .sidebar {
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        padding: 32px 28px;
+      }
+
+      /* ── Main ── */
+      .main {
+        padding: 36px 40px 32px;
+      }
+
+      /* ── Sections ── */
+      .section {
+        margin-bottom: 30px;
+        animation: sectionIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      .sidebar .section:nth-child(1) { animation-delay: 0.2s; }
+      .sidebar .section:nth-child(2) { animation-delay: 0.3s; }
+      .main .section:nth-child(1) { animation-delay: 0.25s; }
+      .main .section:nth-child(2) { animation-delay: 0.35s; }
+      .main .section:nth-child(3) { animation-delay: 0.45s; }
+      .main .section:nth-child(4) { animation-delay: 0.55s; }
+
+      @keyframes sectionIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 18px;
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .section-title::before {
+        content: '';
+        width: 20px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+
+      /* ── Summary ── */
+      .summary {
+        font-size: 0.92rem;
+        line-height: 1.75;
+        color: var(--text-secondary);
+      }
+
+      /* ── Skills ── */
+      .skill-group {
+        margin-bottom: 20px;
+      }
+
+      .skill-label {
+        display: block;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tag {
+        background: var(--accent-subtle);
+        color: var(--accent);
+        border: 1px solid var(--border-accent);
+        padding: 5px 12px;
+        border-radius: var(--radius-pill);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        transition: all 0.25s ease;
+        cursor: default;
+      }
+
+      .tag:hover {
+        background: rgba(108, 140, 255, 0.15);
+        border-color: rgba(108, 140, 255, 0.35);
+        box-shadow: 0 0 16px var(--accent-glow);
+        transform: translateY(-1px);
+      }
+
+      /* ── Experience ── */
+      .exp-item,
+      .project-item,
+      .edu-item {
+        position: relative;
+        margin-bottom: 22px;
+        padding: 18px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        transition: all 0.3s ease;
+      }
+
+      .exp-item:hover,
+      .project-item:hover,
+      .edu-item:hover {
+        border-color: var(--border-accent);
+        background: var(--surface-hover);
+        box-shadow: 0 4px 24px rgba(108, 140, 255, 0.06);
+      }
+
+      /* Accent left bar */
+      .exp-item::before,
+      .project-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 16px;
+        bottom: 16px;
+        width: 3px;
+        border-radius: 3px;
+        background: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .exp-item:hover::before,
+      .project-item:hover::before {
+        opacity: 1;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 6px 16px;
+        margin-bottom: 10px;
+      }
+
+      .company {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .timeline {
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--accent);
+        background: var(--accent-subtle);
+        padding: 3px 12px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--border-accent);
+        align-self: center;
+      }
+
+      .role-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 4px;
+      }
+
+      .role-text {
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .location {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 0;
+        list-style: none;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        font-size: 0.9rem;
+      }
+
+      li {
+        position: relative;
+        padding-left: 18px;
+      }
+
+      li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      }
+
+      li + li {
+        margin-top: 6px;
+      }
+
+      /* ── Projects ── */
+      .project-name {
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .project-line {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        align-items: baseline;
+        margin-bottom: 6px;
+        color: var(--text-secondary);
+      }
+
+      .project-tech {
+        font-family: var(--mono);
+        color: var(--accent);
+        font-weight: 500;
+        font-size: 0.78rem;
+        margin-bottom: 8px;
+      }
+
+      /* ── Education ── */
+      .edu-item .location {
+        margin-bottom: 0;
+      }
+
+      /* ── Strengths ── */
+      .strengths {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .strength {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 8px 16px;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        color: var(--text);
+        font-weight: 600;
+        transition: all 0.25s ease;
+        cursor: default;
+      }
+
+      .strength:hover {
+        border-color: var(--border-accent);
+        color: var(--accent);
+        background: var(--accent-subtle);
+        box-shadow: 0 2px 12px var(--accent-glow);
+        transform: translateY(-2px);
+      }
+
+      /* ── Footer Accent Line ── */
+      .page::after {
+        content: '';
+        display: block;
+        height: 3px;
+        background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), var(--gradient-start));
+        background-size: 200% 100%;
+        animation: shimmer 4s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 860px) {
+        .content {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .topbar {
+          padding: 30px 24px 26px;
+        }
+
+        .main {
+          padding: 28px 24px 22px;
+        }
+
+        .page {
+          margin: 16px;
+          border-radius: var(--radius-sm);
+        }
+
+        .header-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .contact-list {
+          justify-content: flex-start;
+        }
+      }
+
+      /* ── Print ── */
+      @media print {
+        :root {
+          --bg: #ffffff;
+          --page: #ffffff;
+          --surface: #fafbfc;
+          --surface-hover: #f5f6fa;
+          --text: #1a1a2e;
+          --text-secondary: #444444;
+          --accent: #1a1a2e;
+          --accent-glow: transparent;
+          --accent-subtle: #eef0f5;
+          --gradient-start: #1a1a2e;
+          --gradient-end: #1a1a2e;
+          --border: #e0e2ea;
+          --border-accent: #d0d5df;
+        }
+
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
+
+        @page {
+          size: A4;
+          margin: 0;
+        }
+
+        body {
+          background: white !important;
+          color: #1a1a2e;
+          margin: 0;
+          padding: 0;
+          min-height: auto;
+        }
+
+        body::before, body::after { display: none !important; }
+
+        .page {
+          max-width: none;
+          margin: 0;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          animation: none !important;
+          overflow: visible;
+        }
+
+        .page::after { display: none !important; }
+
+        /* ── Force grid layout in print ── */
+        .content {
+          display: grid !important;
+          grid-template-columns: 260px 1fr !important;
+        }
+
+        /* ── Header ── */
+        .topbar {
+          background: #1a1a2e !important;
+          padding: 22px 28px 18px !important;
+        }
+
+        .topbar::before, .topbar::after { display: none !important; }
+
+        h1 {
+          font-size: 1.8rem !important;
+          animation: none !important;
+          background: none !important;
+          -webkit-text-fill-color: white !important;
+          color: white !important;
+        }
+
+        .role {
+          font-size: 0.72rem !important;
+          animation: none !important;
+          color: #b0c4f0 !important;
+        }
+
+        .contact-list {
+          font-size: 0.78rem !important;
+          gap: 6px 14px !important;
+          animation: none !important;
+        }
+
+        .contact-item { color: rgba(255,255,255,0.85) !important; }
+        .contact-item::before { background: rgba(255,255,255,0.5) !important; }
+
+        /* ── Sidebar ── */
+        .sidebar {
+          background: #f3f5f9 !important;
+          padding: 16px 16px !important;
+          border-right: 1px solid #dde0e6 !important;
+        }
+
+        /* ── Main ── */
+        .main {
+          padding: 18px 22px 14px !important;
+        }
+
+        /* ── Compact spacing ── */
+        .section {
+          margin-bottom: 12px !important;
+          animation: none !important;
+        }
+
+        .section-title {
+          display: flex !important;
+          align-items: center !important;
+          font-size: 0.65rem !important;
+          margin-bottom: 8px !important;
+          color: #1a1a2e !important;
+          background: none !important;
+          -webkit-text-fill-color: #1a1a2e !important;
+          letter-spacing: 0.14em !important;
+          font-weight: 800 !important;
+          border: none !important;
+        }
+
+        .section-title::before {
+          content: '' !important;
+          display: inline-block !important;
+          width: 14px !important;
+          height: 2px !important;
+          background: #1a1a2e !important;
+          background-image: none !important;
+          border-radius: 2px !important;
+          flex-shrink: 0 !important;
+        }
+
+        .summary {
+          font-size: 0.78rem !important;
+          line-height: 1.5 !important;
+          color: #444 !important;
+        }
+
+        /* ── Skills ── */
+        .skill-group { margin-bottom: 10px !important; }
+        .skill-label { font-size: 0.6rem !important; margin-bottom: 5px !important; color: #666 !important; }
+
+        .tag {
+          background: #e8ecf4 !important;
+          color: #2c3e50 !important;
+          border: 1px solid #d0d5df !important;
+          padding: 3px 8px !important;
+          font-size: 0.7rem !important;
+        }
+
+        .tags { gap: 4px !important; }
+
+        /* ── Experience & Projects cards ── */
+        .exp-item, .project-item, .edu-item {
+          background: #fafbfc !important;
+          border: 1px solid #e2e5eb !important;
+          padding: 10px 14px !important;
+          margin-bottom: 10px !important;
+          page-break-inside: avoid;
+        }
+
+        .exp-item::before, .project-item::before { display: none !important; }
+
+        .company { font-size: 0.88rem !important; color: #1a1a2e !important; }
+
+        .timeline {
+          font-size: 0.7rem !important;
+          background: #e8ecf4 !important;
+          color: #2c3e50 !important;
+          border: 1px solid #d0d5df !important;
+          padding: 2px 8px !important;
+        }
+
+        .location { font-size: 0.75rem !important; color: #777 !important; }
+
+        ul { font-size: 0.8rem !important; line-height: 1.5 !important; color: #444 !important; }
+        li::before { background: #2c3e50 !important; }
+        li + li { margin-top: 3px !important; }
+
+        .project-name { font-size: 0.88rem !important; color: #1a1a2e !important; }
+        .project-line { font-size: 0.8rem !important; margin-bottom: 3px !important; }
+        .project-tech { font-size: 0.7rem !important; color: #2c3e50 !important; }
+
+        /* ── Strengths ── */
+        .strength {
+          background: #f0f2f6 !important;
+          border: 1px solid #dde0e6 !important;
+          color: #1a1a2e !important;
+          padding: 5px 10px !important;
+          font-size: 0.75rem !important;
+        }
+
+        .strengths { gap: 5px !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="header-row">
+          <div>
+            <h1>BOBY KUMAR</h1>
+            <div class="role">Full-Stack / Backend Developer</div>
+          </div>
+
+          <div class="contact-list">
+            <span class="contact-item">Delhi, India</span>
+            <span class="contact-item">+91-7210669792</span>
+            <span class="contact-item">bobykumar.info7@gmail.com</span>
+            <span class="contact-item">https://github.com/bobykumar7210</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <aside class="sidebar">
+          <section class="section">
+            <h3 class="section-title">Professional Summary</h3>
+            <p class="summary">
+              Backend-focused Full-Stack Developer with practical experience building web
+              applications and APIs using JavaScript, Node.js, Express, React, and modern
+              backend technologies. Strong understanding of asynchronous programming, Event
+              Loop, REST APIs, authentication, database design, testing, and production-oriented
+              development.
+            </p>
+          </section>
+
+          <section class="section">
+            <h3 class="section-title">Technical Skills</h3>
+
+            <div class="skill-group">
+              <span class="skill-label">Languages</span>
+              <div class="tags">
+                <span class="tag">JavaScript</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <span class="skill-label">Frontend</span>
+              <div class="tags">
+                <span class="tag">React</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <span class="skill-label">Backend</span>
+              <div class="tags">
+                <span class="tag">Node.js</span>
+                <span class="tag">Express.js</span>
+                <span class="tag">NestJS</span>
+                <span class="tag">REST APIs</span>
+                <span class="tag">GraphQL</span>
+                <span class="tag">WebSockets</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <span class="skill-label">Databases</span>
+              <div class="tags">
+                <span class="tag">MongoDB</span>
+                <span class="tag">Redis</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <span class="skill-label">DevOps / Cloud</span>
+              <div class="tags">
+                <span class="tag">CI/CD</span>
+                <span class="tag">Docker</span>
+                <span class="tag">AWS</span>
+                <span class="tag">Hostinger</span>
+                <span class="tag">Vercel</span>
+                <span class="tag">Firebase</span>
+              </div>
+            </div>
+          </section>
+        </aside>
+
+        <main class="main">
+          <section class="section">
+            <h3 class="section-title">Professional Experience</h3>
+
+            <div class="exp-item">
+              <div class="meta">
+                <div class="company">Freelance / Subcontract Software Developer</div>
+                <div class="timeline">2021–Present</div>
+              </div>
+              <div class="location">India</div>
+              <ul>
+                <li>Developed and maintained web applications and backend services, translating business requirements into reliable, maintainable features.</li>
+                <li>Built REST APIs with Node.js and Express.js and integrated frontend applications built with React and Next.js.</li>
+                <li>Worked with MongoDB and database concepts including CRUD operations, aggregation, indexes, and query optimization.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3 class="section-title">Projects</h3>
+
+            <div class="project-item">
+              <div class="project-line">
+                <span class="project-name">Full-Stack Web Application</span>
+                <span>—</span>
+                <span>Online Marketplace Platform (Backend + Admin)</span>
+              </div>
+              <div class="project-tech">Node.js, Express, GraphQL, MongoDB, React, Docker</div>
+              <ul>
+                <li>Developed a modular GraphQL API (users, listings, chat, moderation) on Express and MongoDB, with JWT auth and resolver-level authorization.</li>
+              </ul>
+            </div>
+
+            <div class="project-item">
+              <div class="project-line">
+                <span class="project-name">Real-Time Application</span>
+                <span>—</span>
+                <span>Node.js, WebSockets / Socket.IO, React</span>
+              </div>
+              <ul>
+                <li>Designed Socket.IO rooms mapped 1:1 to database chat IDs; users join all rooms on connect and leave only their own socket on disconnect.</li>
+                <li>Delivered real-time messages, presence, and delivery status with NestJS/TypeScript; Redis adapter for multi-instance fan-out and FCM when users are offline.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3 class="section-title">Education</h3>
+            <div class="edu-item">
+              <div class="meta">
+                <div class="company">Bachelor of Computer Applications (BCA)</div>
+                <div class="timeline">2014–17</div>
+              </div>
+              <div class="location">Jamia Humdard University, India</div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3 class="section-title">Core Strengths</h3>
+            <div class="strengths">
+              <span class="strength">Backend API Development</span>
+              <span class="strength">Problem Solving</span>
+              <span class="strength">Debugging</span>
+              <span class="strength">Testing</span>
+              <span class="strength">Clean Code</span>
+              <span class="strength">Full-Stack Collaboration</span>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
