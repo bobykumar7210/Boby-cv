@@ -177,6 +177,8 @@
         gap: 8px;
         white-space: nowrap;
         transition: color 0.25s ease;
+        text-decoration: none;
+        color: inherit;
       }
 
       .contact-item:hover { color: var(--accent); }
@@ -602,7 +604,7 @@
           animation: none !important;
         }
 
-        .contact-item { color: rgba(255,255,255,0.85) !important; }
+        .contact-item { color: rgba(255,255,255,0.85) !important; text-decoration: none !important; }
         .contact-item::before { background: rgba(255,255,255,0.5) !important; }
 
         /* ── Sidebar ── */
@@ -722,9 +724,9 @@
 
           <div class="contact-list">
             <span class="contact-item">Delhi, India</span>
-            <span class="contact-item">+91-7210669792</span>
-            <span class="contact-item">bobykumar.info7@gmail.com</span>
-            <span class="contact-item">https://github.com/bobykumar7210</span>
+            <a class="contact-item" href="tel:+917210669792">+91-7210669792</a>
+            <a class="contact-item" href="mailto:bobykumar.info7@gmail.com">bobykumar.info7@gmail.com</a>
+            <a class="contact-item" href="https://github.com/bobykumar7210" target="_blank" rel="noopener noreferrer">github.com/bobykumar7210</a>
           </div>
         </div>
       </header>
@@ -734,7 +736,7 @@
           <section class="section">
             <h3 class="section-title">Professional Summary</h3>
             <p class="summary">
-              Backend-focused Full-Stack Developer with practical experience building web
+              Backend-focused Full-Stack Developer with almost 5 years practical experience building web
               applications and APIs using JavaScript, Node.js, Express, React, and modern
               backend technologies. Strong understanding of asynchronous programming, Event
               Loop, REST APIs, authentication, database design, testing, and production-oriented
@@ -800,7 +802,7 @@
             <div class="exp-item">
               <div class="meta">
                 <div class="company">Freelance / Subcontract Software Developer</div>
-                <div class="timeline">2021–Present</div>
+                <div class="timeline">2021 – Present</div>
               </div>
               <div class="location">India</div>
               <ul>
@@ -818,7 +820,7 @@
               <div class="project-line">
                 <span class="project-name">Full-Stack Web Application</span>
                 <span>—</span>
-                <span>Online Marketplace Platform (Backend + Admin)</span>
+                <span>Subcontract Project (Online Marketplace Platform)</span>
               </div>
               <div class="project-tech">Node.js, Express, GraphQL, MongoDB, React, Docker</div>
               <ul>
@@ -828,12 +830,27 @@
 
             <div class="project-item">
               <div class="project-line">
-                <span class="project-name">Real-Time Application</span>
+                <span class="project-name">Real-Time SaaS Application</span>
+                <span>—</span>
+                <span>Subcontract Project</span>
               </div>
-              <div class="project-tech">Node.js, WebSockets / Socket.IO, React</div>
+              <div class="project-tech">Node.js, WebSockets / Socket.IO, React, MongoDB</div>
               <ul>
-                <li>Designed Socket.IO rooms mapped 1:1 to database chat IDs; users join all rooms on connect and leave only their own socket on disconnect.</li>
-                <li>Delivered real-time messages, presence, and delivery status with NestJS/TypeScript; Redis adapter for multi-instance fan-out and FCM when users are offline.</li>
+                <li>Apps/web just grab an API key and boom, they can implement and use 1:1 chat.</li>
+                <li>Designed Socket.IO rooms mapped 1:1 to database chat IDs; users join all rooms, leave room, delivered real-time messages, presence, and delivery status with Socket.IO; Redis adapter for multi-instance fan-out and FCM when users are offline.</li>
+              </ul>
+            </div>
+
+            <div class="project-item">
+              <div class="project-line">
+                <span class="project-name">Full Stack Parking Application</span>
+                <span>—</span>
+                <span>Subcontract Project</span>
+              </div>
+              <div class="project-tech">Node.js, Nest.js, Android Native App (Composable), Next.js, MongoDB</div>
+              <ul>
+                <li>Parking management platform for parking operators to run lots, garages, and valet stands.</li>
+                <li>Features a NestJS backend with MongoDB, a Next.js web app for operator portals, and a Kotlin Compose Android app that valet attendants use on handheld devices.</li>
               </ul>
             </div>
           </section>
@@ -843,21 +860,9 @@
             <div class="edu-item">
               <div class="meta">
                 <div class="company">Bachelor of Computer Applications (BCA)</div>
-                <div class="timeline">2014–17</div>
+                <div class="timeline">2014 – 2017</div>
               </div>
-              <div class="location">Jamia Humdard University, India</div>
-            </div>
-          </section>
-
-          <section class="section">
-            <h3 class="section-title">Core Strengths</h3>
-            <div class="strengths">
-              <span class="strength">Backend API Development</span>
-              <span class="strength">Problem Solving</span>
-              <span class="strength">Debugging</span>
-              <span class="strength">Testing</span>
-              <span class="strength">Clean Code</span>
-              <span class="strength">Full-Stack Collaboration</span>
+              <div class="location">Jamia Hamdard University, India</div>
             </div>
           </section>
         </main>
